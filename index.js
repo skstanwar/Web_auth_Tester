@@ -13,15 +13,16 @@ const mode = process.env.NODE_ENV
 
 const app = express()
 console.log(process.env.MONGODB_URI);
-connectDB() 
+// connectDB() 
 const fileUrl= new URL(import.meta.url);
 const filePath=dirname(fileURLToPath(fileUrl));
 const staticPath = join(filePath,'static');
 const publicPath= join(filePath,'public');
 app.use(express.static(staticPath));
-
+app.use(express.json());
 console.log(join(publicPath, 'index.html'));
 app.get('/',(req, res)=>{
     res.sendFile(join(publicPath, 'index.html'));
+    console.log(req.body);
 })
 app.listen(PORT, console.log(`Server running in ${mode} mode on port ${PORT}`))
