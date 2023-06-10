@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "description": "web auth tester",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "dependencies": {
     "@passwordless-id/webauthn": "^1.2.4",
     "body-parser": "^1.20.2",
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
     "mongoose": "^7.2.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"npx nodemon index.js"
+    "start": "npx nodemon index.js"
   },
   "author": "sanjay",
   "license": "ISC"

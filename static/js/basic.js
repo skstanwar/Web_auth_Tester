@@ -14,11 +14,20 @@ async function temp(){
     })
     
     console.log(registration);
+    const response = await fetch('/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(registration)
+
+    })
+    console.log(response);
     
 }
 async function temp2(){
     console.log("function is working");
-    const username = document.getElementById("username").value;
+    // const username = document.getElementById("username").value;
     const challenge = "a7c61ef9-dc23-4806-b486-2428938a547e"
 
       const authentication = await client.authenticate([], challenge, {
@@ -28,6 +37,7 @@ async function temp2(){
                 })
     
     console.log(authentication);
+   
     
 }
 

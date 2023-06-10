@@ -3,8 +3,7 @@ import dotenv from 'dotenv'
 import {connectDB} from './config/db.js' // DB connection
 import { fileURLToPath } from 'url'
 import {dirname, join} from 'path';
-// import { temp } from './userControl/userController.js'
-
+import userRoutes from './userRoutes/userRoute.js'
 
 
 dotenv.config()
@@ -13,7 +12,7 @@ const mode = process.env.NODE_ENV
 
 const app = express()
 console.log(process.env.MONGODB_URI);
-// connectDB() 
+connectDB();
 const fileUrl= new URL(import.meta.url);
 const filePath=dirname(fileURLToPath(fileUrl));
 const staticPath = join(filePath,'static');
@@ -23,6 +22,7 @@ app.use(express.json());
 console.log(join(publicPath, 'index.html'));
 app.get('/',(req, res)=>{
     res.sendFile(join(publicPath, 'index.html'));
-    console.log(req.body);
+    
 })
+app.use('/' , userRoutes);
 app.listen(PORT, console.log(`Server running in ${mode} mode on port ${PORT}`))
